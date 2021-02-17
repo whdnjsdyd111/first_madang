@@ -1,0 +1,198 @@
+            03-1 첫 프로젝트 만들기
+
+프로젝트를 만든 후 Name 과 Package name 을 마음대로 지정한다.
+단, Name 은 영문 대문자로 시작해야 하고 Package name 은 소문자로 시작해야 한다.
+Language 는 Java 로 선택하고 Finish 를 선택한다.
+
+
+    조언
+
+    패키지 이름은 앱을 구분하는 고유값으로 다른 앱과 구분될 수 있는 역할을 한다.
+    실무에선 패키지 이름을 인터넷 사이트 주소(도메인)처럼 짓는 경우가 많다.
+
+
+        MainActivity.java 살펴보기
+
+살펴보면 평범한 자바 프로그램과 조금 다르다는 것을 알 수 있다.
+
+
+        activity_main.xml 살펴보기
+
+선택하면 스마트폰 화면이 여러 개의 작은 화면으로 나타난다.
+하얀 화면은 실제 스마트폰 화면에 디자인할 화면이고 구성 요소만 보여주는 청사진 화면이 있다.
+
+Select Design Surface(B 버튼) 을 누르면 화면을 표시할 것을 결정할 수 있다.
+
+청사진 화면이 필요한 이유는 화면의 요소가 서로 겹쳐있을 때 요소를 투명하게 보고 작업할 수 있어 유용하다.
+
+
+            03-2 에뮬레이터로 Hello World 앱 실행하기
+
+자동으로 만들어진 앱을 실행해보자. 가상 단말기로 안드로이드를 실행할 수 있다.
+
+
+        가상 단말 만들기
+
+오른쪽 상단의 [AVC Manager] 아이콘을 누르면 가상 단말 관리 화면이 나타난다.
+여기서 새로운 단말기를 만들어보자. [Create Virtual Device...] 를 누르면 Select Hardware 창이 나타난다.
+여기서 새 가상 단말의 하드웨어를 선택할 수 있다. 기본값 Pixel 2 를 그대로 두고 [Next] 버튼을 누른다.
+
+이후의 창에선 가상 단말을 실행할 때 사용할 System Image 를 선택한다. Q 를 이용할테니 이를 다운로드한다.
+다운로드 후 Q 를 선택하고 [Next] 를 눌러 넘어간다.
+
+
+    조언
+
+    각 표시된 ABI 는 Application Binary Interface 약자로 안드로이드 CPU 칩과 상호 작용 방법을 기술한 인터페이스이다.
+    단말 CPU 칩은 제조사마다 달라 이에 맞는 ABI 를 선택해야 한다.
+
+
+이후의 창은 선택한 정보가 맞는지 확인하는 화면으로 기본값 그대로 [Finish] 로 마무리한다.
+
+AVD Manager 에서 Pixel 2 API 29 를 선택하고 실행을 하고 기다미면 가상 안드로이드가 나타난다.
+
+
+        에뮬레이터를 사용하여 앱 실행
+
+실행 버튼을 누르고 조금 기다리면 Hello World 가 나타날 것이다.
+
+
+            03-3 Hello 프로젝트 하나씩 바꾸기
+
+Hello World! 메시지를 띄웠는데 비록 형태는 단순해도 안드로이드 기기에서도 실행되는 진짜 앱이다.
+
+
+        MainActivity.java 살펴보기
+
+이는 main 함수를 찾아볼 수 없는데 onCreate() 함수가 시작점 역할을 한다고 생각할 수 있다.
+Hello World! 메시지는 onCreate()와 상관없으며 setContentView() 함수와 파라미터로 전달된
+R.layout.activity_main 에 의해 나타난 것으로 볼 수 있다.
+R.layout.activity_main 가 화면 구성 요소에 대한 정보를 넘긴다고만 이해하자.
+
+
+        activity_main.xml 살펴보기
+
+R.layout.activity_main 이란 이름이 activity_main 과 비슷한데 실제로 R.layout.activity_main 은
+'/res/layout/activity_main.xml' 을 가리킨다.
+
+오른쪽 상단의 Design 과 Code 를 번갈아 눌러보자.
+
+
+        화면 중앙 메시지 변경
+
+마우스로 메시지를 더블클릭해보자. Attributes 창에 여러 정보가 표시되는데 text 속성을 'Hello World!' 에서
+'안녕 안드로이드!' 로 변경해보자. 이후에 실행하면 글자가 바뀐 것을 확인할 수 있다.
+
+
+        화면 버튼 추가
+
+화면 중앙의 메시지를 삭제하고 디자인 화면 왼쪽에 팔레트(Palette)가 있다.
+추가할 요소들이 있으며 마우스로 끌어서 추가할 수 있다. 놓기 전에 자석 모양 아이콘을 클릭하여
+금지 모양을 없애자. 이러면 요소를 쉽게 배치할 수 있다.
+
+배치 후 버튼의 텍스트를 '확인 1' 로 바꿔보자.
+
+이제 실행하여 버튼을 확인한다.
+
+
+        버튼 클릭 시 메시지 나타나게 하기
+
+이때 이벤트란 개념이 필요하며 버튼 누르는 행위는 클릭 이벤트로 인식한다.
+자바로 작성한 코드로 이벤트를 처리할 수 있으며 안드로이드도 표준 자바와 동일하니 자바 코드로 이벤트를 처리해야 한다.
+
+버튼은 activity_main 에 있으며 자바 소스로 분리되어 있다. 이는 MainActivity.java 와 연결을 해야한다.
+다음은 버튼 클릭 이벤트 처리 과정이다.
+
+
+    - XML 레이아웃 파일의 버튼에 onClick 속성 값 넣기
+        activity_main 파일의 버튼에 onClick 속성값으로 클릭 이벤트를 처리할 함수 이름을 입력
+    - 소스 파일에 이벤트 처리 함수 추가
+        MainActivity.java 파일에 XML 에서 지정한 함수를 추가
+        이 함수는 onClick 의 속성 값과 동일해야함
+
+
+버튼을 누르고 속성에서 onClick 속성을 찾아본다. 값으로 'onButton1Clicked' 을 입력하여 넣자.
+확인을 위해 코드에서 <Button> 태그에 android:onClick 속성에 'onButton1Clicked' 글자가 있는지 확인하자.
+
+
+    조언
+
+    자동으로 추가되는 속성은 순서가 달라질 수 있다.
+
+
+소스 코드에서 이제 onButton1Clicked 함수를 추가해본다. 코드 수정 전에 어떤 클래스를 import 구문 추가할 때
+자동으로 넣는 기능을 제공하니 이를 설정하자.
+
+[File Settings[ 에서 [Editor - General - Auto Import] 에서 Add unambiguous imports on the fly 와
+Optimize imports on the fly 를 체크한다. 이제 MainActivity.java 에서 onCreate() 함수를 추가한다.
+
+
+    public void onButton1Clicked(View v) {
+        Toast.makeText(this, "확인1 버튼이 눌렸어요.", Toast.LENGTH_LONG).show();
+    }
+
+
+토스트는 작고 간단한 메시지를 잠깐 보여주는 역할을 한다.
+Toast 클래스의 makeText() 메소드와 show() 메소드로 메시지가 화면에 잠깐 보였다 사라지게 표시할 수 있다.
+
+
+            03-4 여러 개의 버튼 추가
+
+여러 버튼을 추가해보자. 이번엔 디자인 화면과 코드 화면 모두 활용해본다.
+
+
+        디자인 화면에 새 버튼 추가하고 자리 잡기
+
+팔레트를 이용해 '확인1' 버튼 밑에 새 버튼을 추가해보자.
+새 버튼은 '확인1' 버튼과 달리 경계선 표시가 없는데 새 버튼의 위쪽 동그라미를 '확인1' 버튼에 끌어 놓고
+아래 동그라미는 바닥에 끌어 놓으면 자동으로 중간에 맞춰서 알맞게 위치한다.
+
+새 버튼을 선택하고 속성에서 text 속성 값을 '네이버 접속하기' 로, onClick 속성 값은 'onButton2Clicked' 를 입력한다.
+계속하여 버튼 하나를 '네이버 접속하기' 아래에 같은 방식으로 더 추가한다.
+새 버튼은 text 와 onClick 속성 값을 '전화 걸기' 값과 'onButton3Clicked' 를 각각 입력한다.
+
+
+        디자인 화면 단말 변경
+
+디자인 화면은 가로/세로 방향 전환이 가능하다. 화면 위쪽에 단말 변경 콤보 박스를 선택하여 'Nexus 9' 을 선택해보자.
+화면이 바뀌더라도 위치가 유지되는 상태를 볼 수 있다.
+
+
+        새 버튼에 기능 추가
+
+MainActivity.java 에서 다음 코드를 입력한다.
+
+
+    public void onButton2Clicked(View v) {
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.naver.com"));
+        startActivity(myIntent);
+    }
+
+    public void onButton3Clicked(View v) {
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:010-6848-0083"));
+        startActivity(myIntent);
+    }
+
+
+onButton2Clicked 메소드는 네이버를 호출하는 메소드고 onButton3Clicked 매소드는 전화를 걸어주는 메소드이다.
+네이버 접속하기는 웹브라우저로 네이버에 이동한다.
+
+위는 인텐트(Intent)로서 하고자 하는 행위를 의미한다. 쉽게 애플리케이션 구성간에 데이터를 전달하거ㅗ나
+실행하려는 시능이 무엇인지 플랫폼에 알려준다.
+
+
+    정리
+
+    setContentView()            무엇을 보여줄지 결정하는 메소드
+
+    R.layout.activity_main      화면에 보여줄 대상의 위치
+
+    activity_main.xml           화면 구성
+
+    text 속성                   글자를 표시
+
+    onClick 속성                버튼 클릭시 실행할 메소드를 지정할 수 있는 속성
+
+    Intent                      어느 기능을 실행할지 지정
+
+    Toast                       잠깐 보였다 사라지는 메시지
